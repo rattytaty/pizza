@@ -6,12 +6,12 @@ export const PizzaCard: React.FC<pizza> = React.memo(({id, imageUrl, title, size
 
 
     const [pizzaCount, setPizzaCount] = useState<number>(0)
-    //const typeNames = ["Thin","Traditional"]
-    const [activeType, setActiveType] = useState<number>(0)
+    const typeNames = ["Thin","Traditional"]
+    const [activeType, setActiveType] = useState<number>(types[0])
     const [activeSize, setActiveSize] = useState(26)
 
-    return (
-        <div className="pizza-block" style={{display:"inline-block"}}>
+    return <div className="pizza-block-wrapper">
+        <div className="pizza-block" >
             <img
                 className="pizza-block__image"
                 src={imageUrl}
@@ -21,14 +21,14 @@ export const PizzaCard: React.FC<pizza> = React.memo(({id, imageUrl, title, size
             <div className="pizza-block__selector">
                 <ul>
                     {
-                       types.map(
+                        types.map(
                             (type, index)=>
-                        <li key={index}
-                            className={activeType===type?"active":""}
-                            onClick={()=>setActiveType(type)}>
-                            {type}
-                        </li>
-                    )}
+                                <li key={index}
+                                    className={activeType===type?"active":""}
+                                    onClick={()=>setActiveType(type)}>
+                                    {typeNames[type]}
+                                </li>
+                        )}
                 </ul>
                 <ul>
                     {sizes.map((size, index)=>
@@ -59,5 +59,7 @@ export const PizzaCard: React.FC<pizza> = React.memo(({id, imageUrl, title, size
                 </button>
             </div>
         </div>
-    )
+    </div>
+
+
 })

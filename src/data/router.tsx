@@ -1,9 +1,10 @@
 import {createBrowserRouter} from "react-router-dom";
-import ErrorPage from "./Components/Pages/ErrorPage";
-import PizzasPage from "./Components/Pages/PizzasPage";
-import {SodaPage} from "./Components/Pages/SodaPage";
-import {Layout} from "./Components/Pages/Layout";
-import {HomePage} from "./Components/Pages/HomePage";
+import ErrorPage from "../Components/Pages/ErrorPage";
+import PizzasPage from "../Components/Pages/PizzasPage";
+import {SodaPage} from "../Components/Pages/SodaPage";
+import {Layout} from "../Components/Pages/Layout";
+import {HomePage} from "../Components/Pages/HomePage";
+import Cart from "../Components/Pages/Cart";
 
 export const router = createBrowserRouter([
     {
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
             {
                 path: "soda",
                 element: <SodaPage/>
+            },
+            {
+                path:"cart",
+                element:<Cart/>
             }
         ]
     }

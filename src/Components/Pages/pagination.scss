@@ -1,0 +1,48 @@
+@import '../../scss/variables';
+
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.sideBtn {
+  border: none;
+  margin: 2px;
+  height: 35px;
+  flex: 1 1 50%;
+  cursor: pointer;
+  background:none;
+  border-radius: 20px;
+  &:hover {
+    background: #d0d0d7;
+  }
+}
+
+.root {
+  margin-bottom: 15px;
+  display: flex;
+  width: 1400px;
+
+
+  .pages {
+    display: flex;
+    flex: 1 1 50%;
+    flex-direction: row;
+    justify-content: center;
+
+    button {
+      height: 35px;
+      width: 35px;
+      border: none;
+      border-radius: 20px;
+      margin: 2px;
+
+
+      &.activeBtn {
+        background-color: $black;
+        color: #f6f6f6;
+      }
+    }
+  }
+
+}

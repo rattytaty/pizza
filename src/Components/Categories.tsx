@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 
-
 export const Categories = () => {
 
     const pizzaCategories:Array< pizzaCategoriesType> = ["All", "Meat","Vegetarian","Grill","Hot","Closed"]
@@ -14,20 +13,14 @@ export const Categories = () => {
     }
 
     const Categories = pizzaCategories.map((Category, index)=>
-        <li onClick={()=>changeCategory(Category)}
+        <button onClick={()=>changeCategory(Category)}
             key={index}
-            className={activeCategory===Category?"active":""}>{Category}</li>
+            className={activeCategory===Category?"active":""}>{Category}</button>
     )
 
+    return <div className="categories">
 
-
-
-
-    return (
-        <div className="categories">
-            <ul>
                 {Categories}
-            </ul>
+
         </div>
-    )
 }

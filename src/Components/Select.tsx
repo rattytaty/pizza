@@ -1,5 +1,5 @@
 import React, {useCallback, useRef, useState} from "react";
-import {useOutsideClick} from "./useOutsideClick";
+import {useOutsideClick} from "../data/useOutsideClick";
 
 type SelectProps = {
     value: number
@@ -25,10 +25,10 @@ export function Select(props: SelectProps) {
         props.onChange(value);
         togglePopup()
     }
-    return <>
-        <div tabIndex={0}
+    return <div tabIndex={0}
              className="sort"
              ref={reference}
+                onClick={togglePopup}
         >
             <div className="sort__label">
                 <svg
@@ -45,10 +45,10 @@ export function Select(props: SelectProps) {
                 </svg>
 
                 <b>Items on page:</b>
-                <span onClick={togglePopup}>{selectedItem && selectedItem.value}</span>
+                <span >{selectedItem && selectedItem.value}</span>
             </div>
 
-            {active && <div className="sort__select">
+            {active && <div className="sort__popup">
                 <ul>
                     {items.map(i =>
                         <li
@@ -64,5 +64,4 @@ export function Select(props: SelectProps) {
             </div>
             }
         </div>
-    </>
 }

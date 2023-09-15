@@ -1,8 +1,8 @@
 import React, {useRef, useState} from "react";
-import {useOutsideClick} from "./useOutsideClick";
+import {useOutsideClick} from "../data/useOutsideClick";
 
 
-type sorting = "Featured" | "Price" | "Name"
+type sorting = "Featured" | "Price: Low to High" |"Price: High to Low" | "Name"
 
 export const Sort = () => {
     const [isHidden, setIsHidden] = useState<boolean>(false)
@@ -15,7 +15,7 @@ export const Sort = () => {
     useOutsideClick(reference, ()=>setIsHidden(false))
 
     return (
-        <div ref={reference} className="sort">
+        <div onClick={() => setIsHidden(!isHidden)} ref={reference} className="sort">
             <div className="sort__label">
                 <svg
                     width="10"
@@ -31,15 +31,17 @@ export const Sort = () => {
                 </svg>
 
                 <b>Sort by:</b>
-                <span onClick={() => setIsHidden(!isHidden)}>{sorting}</span>
+                <span >{sorting}</span>
             </div>
             {isHidden && <div className="sort__popup">
                 <ul>
                     <li onClick={() => onSortingItemClick("Featured")}
                         className={sorting === "Featured" ? "active" : ""}>Featured
                     </li>
-                    <li onClick={() => onSortingItemClick("Price")}
-                        className={sorting === "Price" ? "active" : ""}>Price
+                    <li onClick={() => onSortingItemClick("Price: Low to High")}
+                        className={sorting === "Price: Low to High" ? "active" : ""}>Price: Low to High
+                    </li>
+                    <li onClick={() => onSortingItemClick("Price: High to Low")} className={sorting === "Price: High to Low" ? "active" : ""}>Price: High to Low
                     </li>
                     <li onClick={() => onSortingItemClick("Name")} className={sorting === "Name" ? "active" : ""}>Name
                     </li>
